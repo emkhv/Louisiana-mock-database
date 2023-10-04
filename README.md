@@ -84,8 +84,10 @@ You can create user-specific roles as needed. For example:
 ```sql
 -- CREATE ROLE Risti_Bjerring noinherit login PASSWORD 's3cr3t';
 -- GRANT manager_ls TO Risti_Bjerring;
+.
 
-**### SELECT Query Details**
+
+### SELECT Query Details
 
 The query retrieves the following information:
 
