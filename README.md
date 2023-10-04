@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Louisiana Museum Mock Database is a simulated database designed to emulate the data management needs of the Louisiana Museum of Modern Art in Denmark. This mock database provides a structured and efficient way to simulate the storage, retrieval, and management of artwork information, artists, exhibitions, and more, as if it were the real Louisiana Museum database.
+The Louisiana Museum Mock Database is a simulated database designed to emulate the data management needs of the Louisiana Museum of Modern Art in Denmark. This mock database provides a structured and efficient way to simulate the storage, retrieval, and management of artwork information, artists, exhibitions, and more as if it were the real Louisiana Museum database.
 ![Uploading poster.png…]()
 
 ## Features
@@ -20,22 +20,22 @@ The Louisiana Museum Mock Database includes the following custom functions:
 
 ### Automatic Last Update
 
-- **Function Name:** `last_updated`
+- **Function Name:** [`last_updated`](2.last_update_column.sql)
 - **Description:** These PL/pgSQL functions and triggers automate the addition of a last_update column with a current timestamp default to all tables in the ls_museum schema. They also create triggers that update the last_update column automatically before any data update, enhancing data tracking and auditing capabilities.
 
 ### Simulated Bulk Data Insertion
 
-- **Function Name:** `insert_address`
+- **Function Name:** [`insert_address`](3.insert_address_function.sql)
 - **Description:** This PL/pgSQL function inserts address details, including address lines, city, country, and postal code, into the database. It returns the newly created or existing address's unique identifier (address_id). The function automatically manages duplicates, making it convenient for adding complete address information in a single call.
 
 ### Simulated Artwork Insertion
 
-- **Function Name:** `insert_artwork`
+- **Function Name:** [`insert_artwork`](4.insert_artwork_function.sql)
 - **Description: The function allows you to conveniently enter details of an artwork, including its name, artist, creation year, event name, and supplier's name in a single operation. It returns the unique identifier (artwork_id) of the newly inserted artwork. This function simplifies the process of adding artwork information, making it efficient and user-friendly.
 
 ### Artwork Retrieval by Artist
 
-- **Function Name:** `get_artwork_by_artist`
+- **Function Name:** [`get_artwork_by_artist`](5.get_artworks_by_artist.sql)
 - **Description:** Simulate searching for artworks by inserting the artist's name. The function retrieves artworks associated with the specified artist.
 
 ## Database Schema
@@ -59,11 +59,13 @@ The Louisiana Museum Mock Database comprises 15 tables, each designed to store s
 15. `payment`: Stores details of payments made for purchases, including payment amounts, statuses, purchase associations, and payment dates.
 16. `order_list`: Contains data about orders made, including item IDs and quantities.
 
-The DDL script for creating these tables, along with constraints, can be found in [schema.sql](schema.sql).
+The DDL script for creating these tables, along with constraints, can be found in [1.DB_DDL.sql](1.DB_DDL.sql).
 
-For more detailed information about each table's structure and constraints, please refer to the [database schema documentation](docs/schema.md).
+For more detailed information about each table's structure and constraints, check out the scheme of the database [scheme](mock-db-scheme.PNG).
 
-## Access Control and Roles
+
+
+## [Access Control and Roles](7.DCL_manager.sql)
 
 The Louisiana Museum Mock Database uses Data Control Language (DCL) commands to manage access control and define roles within the database.
 
@@ -89,8 +91,10 @@ You can create user-specific roles as needed. For example:
 -- GRANT manager_ls TO Risti_Bjerring;
 ```
 
+## [Populating the Database](6.DML.sql)
+To populate the database with initial data, you can use the provided DML script. This script contains SQL queries for inserting data into the database tables, making it easy to get started with a pre-configured dataset.
 
-## SELECT Query Details
+## [SELECT Query Details](8.DQL(Select).sql)
 
 The query retrieves the following information:
 
@@ -106,6 +110,7 @@ The query retrieves the following information:
 
 You can execute this query to review data with the last update timestamp within the last month. It helps maintain data integrity and quality in the museum database, ensuring that recent updates are accurate and appropriately recorded.
 
+     
 
 ## Getting Started
 
@@ -117,3 +122,19 @@ To interact with the Louisiana Museum Mock Database, you can follow these steps:
    git clone https://github.com/emkhv/louisiana-mock-database.git
    cd louisiana-mock-database
    ```
+
+       
+## Running The Scrypts 
+
+To execute the scripts in the correct order, follow these steps:
+
+1. Open your preferred database management tool or command-line interface.
+2. Connect to your PostgreSQL database.
+3. Navigate to the directory where the scripts are located.
+4. Run each script one by one, following the **numerical order** in the script filenames.
+
+By running the scripts in the order specified by the filenames (e.g., 01_dml_script.sql, 02_dml_script.sql, etc.), you'll ensure that the data is inserted into the database tables as intended.
+   
+### Requirements
+PostgreSQL Database
+SQL Client
