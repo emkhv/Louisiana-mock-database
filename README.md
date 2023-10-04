@@ -3,13 +3,16 @@
 ## Overview
 
 The Louisiana Museum Mock Database is a simulated database designed to emulate the data management needs of the Louisiana Museum of Modern Art in Denmark. This mock database provides a structured and efficient way to simulate the storage, retrieval, and management of artwork information, artists, exhibitions, and more, as if it were the real Louisiana Museum database.
+![poster](https://github.com/emkhv/Louisiana-mock-database/assets/51248653/9e718fd3-f1b7-41d0-af39-66f842b7bf9a)
 
 ## Features
-
-- Simulate the storage of detailed information about artworks, including artist details, titles, mediums, and creation year.
-- Emulate the tracking of artists' biographical information, nationalities, and other relevant details.
-- Simulate the recording of information about museum exhibitions, including dates, descriptions, and featured artworks.
-- Perform simulated searches for artworks by artist name, title, medium, or any custom attributes.
+1. **Comprehensive Data Structure:** Organized into 15 tables, covering events, artworks, memberships, payments, and more.
+2. **Data Integrity:** Enforced through foreign key constraints to maintain data relationships.
+3. **Last Update Tracking:** Records the last update timestamp for auditing and monitoring changes.
+4. **Data Entry Convenience:** User-friendly functions simplify data insertion, such as `insert_address` and `insert_artwork`.
+5. **Security and Access Control:** Implements role-based access control and schema isolation for data protection.
+6. **Triggers and Functions:** Uses triggers and PL/pgSQL functions to automate tasks and enhance functionality.
+7. **Data Analysis and Reporting:** Supports complex SQL queries for data analysis and reporting.
 
 ## Functions
 
@@ -84,10 +87,10 @@ You can create user-specific roles as needed. For example:
 ```sql
 -- CREATE ROLE Risti_Bjerring noinherit login PASSWORD 's3cr3t';
 -- GRANT manager_ls TO Risti_Bjerring;
-.
+```
 
 
-### SELECT Query Details
+## SELECT Query Details
 
 The query retrieves the following information:
 
@@ -113,3 +116,4 @@ To interact with the Louisiana Museum Mock Database, you can follow these steps:
    ```shell
    git clone https://github.com/emkhv/louisiana-mock-database.git
    cd louisiana-mock-database
+   ```
