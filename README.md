@@ -3,7 +3,7 @@
 ## Overview
 
 The Louisiana Museum Mock Database is a simulated database designed to emulate the data management needs of the Louisiana Museum of Modern Art in Denmark. This mock database provides a structured and efficient way to simulate the storage, retrieval, and management of artwork information, artists, exhibitions, and more, as if it were the real Louisiana Museum database.
-![poster](https://github.com/emkhv/Louisiana-mock-database/assets/51248653/9e718fd3-f1b7-41d0-af39-66f842b7bf9a)
+![Uploading poster.png…]()
 
 ## Features
 1. **Comprehensive Data Structure:** Organized into 15 tables, covering events, artworks, memberships, payments, and more.
