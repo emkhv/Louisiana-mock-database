@@ -124,7 +124,7 @@ To interact with the Louisiana Museum Mock Database, you can follow these steps:
    ```
 
        
-## Running The Scrypts 
+## Running The Scripts 
 
 To execute the scripts in the correct order, follow these steps:
 
@@ -133,7 +133,7 @@ To execute the scripts in the correct order, follow these steps:
 3. Navigate to the directory where the scripts are located.
 4. Run each script one by one, following the **numerical order** in the script filenames.
 
-By running the scripts in the order specified by the filenames (e.g., 01_dml_script.sql, 02_dml_script.sql, etc.), you'll ensure that the data is inserted into the database tables as intended.
+By running the scripts in the order specified by the filenames (e.g., 01.DB_DDL.sql, 02.last_update_column.sql, etc.), you'll ensure that the data is inserted into the database tables as intended.
    
 ### Requirements
 PostgreSQL Database
