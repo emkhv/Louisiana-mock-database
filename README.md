@@ -136,5 +136,7 @@ To execute the scripts in the correct order, follow these steps:
 By running the scripts in the order specified by the filenames (e.g., 01.DB_DDL.sql, 02.last_update_column.sql, etc.), you'll ensure that the data is inserted into the database tables as intended.
    
 ### Requirements
-PostgreSQL Database
-SQL Client
+-PostgreSQL Database
+-SQL Client
+
+Here is the [script](1-8.DB_Script.sql) if you want to run them all together.
