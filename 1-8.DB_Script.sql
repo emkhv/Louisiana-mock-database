@@ -2,8 +2,6 @@
 				 **Did you know that the naming of the museum has nothing to do with the American state name, 
 				 **	it is actually called Louisiana museum because the owner had 3 wives named Louisiana:), 
 				 **Check their website (https://louisiana.dk/)
-				 **I created triggers, indexes, checks, functions for insert, read-only role for manager, etc. 
-				 **See for youself, hope you enjoy!
 				 */
 
 --SELECT * FROM pg_stat_activity;
