@@ -472,3 +472,64 @@ INSERT INTO payment (amount,status,purchase_id,payment_date)
 VALUES (145, 'Success', 1,now()),
 (375, 'Success', 2,now()),
 (145, 'Success', 3,now());
+
+-- Insert statements for the 'purchase' table
+INSERT INTO ls_museum.purchase (order_id, staff_id, total, purchase_date) 
+SELECT p.order_id, p.staff_id, p.total, p.purchase_date
+FROM (
+    VALUES 
+        (1, 1, 145, '2024-02-26 10:00:00'::timestamp),
+        (2, 2, 375, '2024-02-25 14:30:00'::timestamp),
+        (3, 3, 145, '2024-02-24 11:45:00'::timestamp),
+        (4, 4, 200, '2024-02-24 15:20:00'::timestamp),
+        (5, 5, 320, '2024-02-25 09:10:00'::timestamp)
+) AS p(order_id, staff_id, total, purchase_date)
+LEFT JOIN ls_museum.purchase pu ON p.order_id = pu.order_id
+WHERE pu.order_id IS NULL;
+
+-- Insert statements for the 'payment' table
+INSERT INTO ls_museum.payment (amount, status, purchase_id, payment_date)
+SELECT py.amount, py.status, py.purchase_id, py.payment_date
+FROM (
+    VALUES 
+        (145, 'Success', 1, '2024-02-26 10:15:00'::timestamp),
+        (375, 'Success', 2, '2024-02-25 15:00:00'::timestamp),
+        (145, 'Success', 3, '2024-02-24 12:00:00'::timestamp),
+        (200, 'Success', 4, '2024-02-24 15:30:00'::timestamp),
+        (320, 'Success', 5, '2024-02-25 09:30:00'::timestamp)
+) AS py(amount, status, purchase_id, payment_date)
+LEFT JOIN ls_museum.payment pm ON py.purchase_id = pm.purchase_id
+WHERE pm.purchase_id IS NULL;
+
+-- Insert statements for the 'event' table
+INSERT INTO ls_museum.event (
+    event_name, event_type_id, ticket_cost, start_date, end_date, event_hall_id, event_director_id, description
+)
+SELECT ev.event_name, ev.event_type_id, ev.ticket_cost, ev.start_date, ev.end_date, ev.event_hall_id, ev.event_director_id, ev.description
+FROM (
+    VALUES 
+        ('Event 1', 1, 100, '2024-03-01 09:00:00'::timestamp, '2024-03-01 18:00:00'::timestamp, 1, 1, 'Description for Event 1'),
+        ('Event 2', 2, 150, '2024-03-05 10:00:00'::timestamp, '2024-03-05 20:00:00'::timestamp, 2, 2, 'Description for Event 2'),
+        ('Event 3', 3, 200, '2024-03-10 11:00:00'::timestamp, '2024-03-10 22:00:00'::timestamp, 3, 3, 'Description for Event 3'),
+        ('Event 4', 1, 120, '2024-03-15 09:30:00'::timestamp, '2024-03-15 17:30:00'::timestamp, 1, 4, 'Description for Event 4'),
+        ('Event 5', 2, 180, '2024-03-20 10:30:00'::timestamp, '2024-03-20 19:30:00'::timestamp, 2, 5, 'Description for Event 5')
+) AS ev(event_name, event_type_id, ticket_cost, start_date, end_date, event_hall_id, event_director_id, description)
+LEFT JOIN ls_museum.event evt ON ev.event_name = evt.event_name
+WHERE evt.event_name IS NULL;
+
+-- Insert statements for the 'artwork' table
+INSERT INTO ls_museum.artwork (
+    name, artist, creation_year, event_id, supplier_id
+)
+SELECT aw.name, aw.artist, aw.creation_year, aw.event_id, aw.supplier_id
+FROM (
+    VALUES 
+        ('Artwork 1', 'Artist 1', '2000-01-01', 1, 1),
+        ('Artwork 2', 'Artist 2', '2010-01-01', 2, 2),
+        ('Artwork 3', 'Artist 3', '2020-01-01', 3, 3),
+        ('Artwork 4', 'Artist 4', '2005-01-01', 4, 4),
+        ('Artwork 5', 'Artist 5', '2015-01-01', 5, 5)
+) AS aw(name, artist, creation_year, event_id, supplier_id)
+LEFT JOIN ls_museum.artwork art ON aw.name = art.name
+WHERE art.name IS NULL;
+
